@@ -72,7 +72,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <div className="print-only">
-          {BRAND.name} — {BRAND.website}
+          {BRAND.name} — {BRAND.website} • About this demo: https://github.com/jlov7/noah-buyer-studio
         </div>
         <Modal open={openShare} onClose={() => setOpenShare(false)} title="Share this app (Codespaces)">
           <ol className="list-decimal pl-5 space-y-1">
@@ -94,6 +94,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <li>Open source: see README and docs in this repo for details.</li>
             </ul>
             <p className="text-xs text-gray-400">Data shown are samples for demonstration only.</p>
+            <div className="pt-2 text-sm">
+              Learn more:
+              {' '}
+              <a className="text-brand underline" href="https://github.com/jlov7/noah-buyer-studio#readme" target="_blank" rel="noreferrer">README</a>
+              {' '}·{' '}
+              <a className="text-brand underline" href="https://github.com/jlov7/noah-buyer-studio/blob/main/docs/QUICKSTART.md" target="_blank" rel="noreferrer">Quickstart</a>
+            </div>
           </div>
         </Modal>
         <div className="sticky-cta">
