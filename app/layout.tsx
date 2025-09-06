@@ -25,8 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <link rel="apple-touch-icon" href="/icons/icon.svg" />
+        <link rel="apple-touch-icon" href="/brand/logo.svg" />
         <link rel="icon" href="/brand/logo.svg" type="image/svg+xml" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body style={{ ['--brand-color' as any]: BRAND.colors.primary, ['--brand-color-dark' as any]: BRAND.colors.dark, ['--brand-color-light' as any]: BRAND.colors.light }}>

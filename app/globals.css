@@ -40,8 +40,9 @@ body {
 }
 
 .badge {
-  @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium text-white;
-  background-color: color-mix(in oklab, var(--brand-color) 25%, #000 75%);
+  @apply inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-medium text-white shadow;
+  background-color: color-mix(in oklab, var(--brand-color) 55%, #000 45%);
+  outline: 1px solid color-mix(in oklab, var(--brand-color-dark) 40%, #fff 60%);
 }
 
 .sticky-cta {
@@ -52,6 +53,8 @@ body {
 .bg-brand { background-color: var(--brand-color) !important; }
 .hover\:bg-brand-dark:hover { background-color: var(--brand-color-dark) !important; }
 .text-brand { color: var(--brand-color) !important; }
+.hover\:text-brand-light:hover { color: var(--brand-color-light) !important; }
+.transition-fast { transition: all 120ms ease; }
 
 /* Print footer */
 .print-only { display: none; }
