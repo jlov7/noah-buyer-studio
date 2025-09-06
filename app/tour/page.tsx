@@ -333,42 +333,58 @@ export default function TourPage({ searchParams }: { searchParams: { ids?: strin
             Total drive time approx: {resp?.schedule?.reduce((sum, s) => sum + (s.travelMinutes || 0), 0) | 0} min · Total distance: {typeof resp.totalDistanceKm === 'number' ? (resp.totalDistanceKm * 0.621371).toFixed(1) : '–'} mi · Stops: {resp.schedule.length}
           </div>
           <ol className="space-y-2 text-sm">
-            {resp.schedule.map((s, idx) => (
-              <li
-                key={s.id}
-                className="grid grid-cols-1 gap-2 md:grid-cols-[2rem_1fr]"
-                onKeyDown={(e) => {
-                  if (!reorderMode) return;
-                  if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
-                  e.preventDefault();
-                  if (!resp) return;
-                  const current = (manualOrderIds || resp.order).slice();
-                  const id = s.id;
-                  const from = current.indexOf(id);
-                  const to = e.key === 'ArrowUp' ? Math.max(0, from - 1) : Math.min(current.length - 1, from + 1);
-                  if (from === to) return;
-                  current.splice(to, 0, current.splice(from, 1)[0]);
-                  setManualOrderIds(current);
-                }}
-                tabIndex={reorderMode ? 0 : -1}
-                aria-label={reorderMode ? `Stop ${idx + 1}: ${s.address}. Use up/down arrows to reorder.` : undefined}
-              >
-                <div className="text-gray-400">{idx + 1}.</div>
-                <div>
-                  <div className="font-medium">{s.address}</div>
-                  <div className="text-gray-300">
-                    ETA {new Date(s.eta).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ·
-                    Visit {s.visitMinutes}m · Travel {Math.round(s.travelMinutes)}m
+            {resp.schedule.map((s, idx) => {
+              const toNextMin = idx < resp.schedule.length - 1 ? Math.round(resp.schedule[idx + 1].travelMinutes || 0) : null;
+              let toNextMi: string | null = null;
+              if (resp.legDistancesKm && resp.legDistancesKm.length) {
+                // Map legs to to-next distances accounting for optional start leg
+                const hasStartLeg = resp.legDistancesKm.length === resp.schedule.length;
+                const legIndex = hasStartLeg ? idx + 1 : idx; // distance from this stop to next
+                const km = idx < resp.schedule.length - 1 ? resp.legDistancesKm[legIndex] : undefined;
+                toNextMi = typeof km === 'number' ? (km * 0.621371).toFixed(1) : null;
+              }
+              return (
+                <li
+                  key={s.id}
+                  className="grid grid-cols-1 gap-2 md:grid-cols-[2rem_1fr]"
+                  onKeyDown={(e) => {
+                    if (!reorderMode) return;
+                    if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+                    e.preventDefault();
+                    if (!resp) return;
+                    const current = (manualOrderIds || resp.order).slice();
+                    const id = s.id;
+                    const from = current.indexOf(id);
+                    const to = e.key === 'ArrowUp' ? Math.max(0, from - 1) : Math.min(current.length - 1, from + 1);
+                    if (from === to) return;
+                    current.splice(to, 0, current.splice(from, 1)[0]);
+                    setManualOrderIds(current);
+                  }}
+                  tabIndex={reorderMode ? 0 : -1}
+                  aria-label={reorderMode ? `Stop ${idx + 1}: ${s.address}. Use up/down arrows to reorder.` : undefined}
+                >
+                  <div className="text-gray-400">{idx + 1}.</div>
+                  <div>
+                    <div className="font-medium">{s.address}</div>
+                    <div className="text-gray-300">
+                      ETA {new Date(s.eta).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} ·
+                      Visit {s.visitMinutes}m · Travel {Math.round(s.travelMinutes)}m
+                      {toNextMin !== null && (
+                        <>
+                          {' '}· To next: {toNextMin}m{toNextMi ? ` · ${toNextMi} mi` : ''}
+                        </>
+                      )}
+                    </div>
+                    <textarea
+                      className="mt-2 input h-20"
+                      placeholder="Notes for this stop (optional)"
+                      value={notes[s.id] || ''}
+                      onChange={(e) => setNotes((n) => ({ ...n, [s.id]: e.target.value }))}
+                    />
                   </div>
-                  <textarea
-                    className="mt-2 input h-20"
-                    placeholder="Notes for this stop (optional)"
-                    value={notes[s.id] || ''}
-                    onChange={(e) => setNotes((n) => ({ ...n, [s.id]: e.target.value }))}
-                  />
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ol>
           <div className="mt-4 flex flex-wrap gap-2 text-sm">
             {emailLink && (
