@@ -8,4 +8,9 @@ export const BRAND = {
     dark: '#1864ab',
     light: '#4dabf7',
   },
+  // Optional contact details for print headers/footers
+  contact: {
+    phone: '',
+    email: '',
+  },
 };

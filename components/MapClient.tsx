@@ -64,6 +64,7 @@ export default function MapClient({ listings, selectedIds = [], showFema, showOa
       });
       mapRef.current = map;
       map.addControl(new mod.AttributionControl({ compact: true }));
+      map.addControl(new mod.NavigationControl({ showCompass: false }), 'top-right');
       map.on('load', async () => {
         if (showFema) addFemaWms(map);
         if (showOakWilt || showCodeCases) await addAustinOverlays(map);
