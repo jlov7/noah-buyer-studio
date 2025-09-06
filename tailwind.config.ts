@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import { BRAND } from './lib/brand'
 
 export default {
   content: [
@@ -10,13 +11,12 @@ export default {
     extend: {
       colors: {
         brand: {
-          DEFAULT: '#1c7ed6',
-          dark: '#1864ab',
-          light: '#4dabf7',
+          DEFAULT: BRAND.colors.primary,
+          dark: BRAND.colors.dark,
+          light: BRAND.colors.light,
         },
       },
     },
   },
   plugins: [],
 } satisfies Config
-
