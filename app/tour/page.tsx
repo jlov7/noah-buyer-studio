@@ -90,7 +90,7 @@ export default function TourPage({ searchParams }: { searchParams: { ids?: strin
           const note = (notes as any)[s.id];
           if (note) lines.push(`   Notes: ${note}`);
         });
-        const subject = encodeURIComponent('EpiQue Realty — Austin Tour Plan');
+        const subject = encodeURIComponent('Austin Tour Plan (Demo)');
         const body = encodeURIComponent(lines.join('\n'));
         setEmailLink(`mailto:?subject=${subject}&body=${body}`);
       } catch {

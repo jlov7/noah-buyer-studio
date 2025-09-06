@@ -1,6 +1,6 @@
 export const BRAND = {
-  name: 'EpiQue Realty',
-  website: 'https://epiquerealty.com',
+  name: 'Noah Realty Demo',
+  website: 'https://example.com',
   // Place your logo at public/brand/logo.svg (or .png) and it will be shown.
   logo: '/brand/logo.svg',
   colors: {

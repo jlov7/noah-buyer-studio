@@ -57,6 +57,9 @@ GitHub Actions run lint, typecheck, and tests on push/PR.
 ## Share it
 Make port 3000 Public in Codespaces and share the URL. Buyers can use it on mobile and even add it to their home screen (PWA). In the app, click “Share this app” (copies the URL) or “How to share” for quick steps.
 
-## Branding (EpiQue Realty)
-- Header and print views show an EpiQue Realty mark. To customize the logo, add an SVG or PNG at `public/brand/logo.svg` (or adjust `logo` in `lib/brand.ts`).
-- Update `lib/brand.ts` to change name/website. Colors can be tuned in `tailwind.config.ts` (`brand` palette).
+## Branding (Demo)
+- Header and print views show a demo mark and colors. To customize, add an SVG or PNG at `public/brand/logo.svg` (or adjust `logo` in `lib/brand.ts`).
+- Update `lib/brand.ts` to change name/website. Colors can be tuned via `lib/brand.ts` (bound to Tailwind’s `brand` palette).
+
+## Disclaimer
+- This project is an illustrative demo for discussion only. It is not affiliated with or endorsed by any specific brokerage or brand. Replace the demo brand assets before any external use.

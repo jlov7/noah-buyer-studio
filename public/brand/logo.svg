@@ -8,7 +8,6 @@
   <rect width="96" height="96" rx="16" fill="url(#g)"/>
   <g fill="#fff">
     <path d="M24 64l24-32 24 32h-8l-16-20-16 20z"/>
-    <text x="48" y="76" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">ER</text>
+  <text x="48" y="76" dominant-baseline="middle" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700">NR</text>
   </g>
 </svg>
-

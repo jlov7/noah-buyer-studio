@@ -52,7 +52,7 @@ export const BRAND = {
     <div className="space-y-4">
       <Section
         title="Brand Colors"
-        subtitle="Fine‑tune the EpiQue palette. Preview applies instantly; copy the snippet to update lib/brand.ts for a permanent change."
+        subtitle="Fine‑tune this demo palette. Preview applies instantly; copy the snippet to update lib/brand.ts for a permanent change."
       />
       <Card>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
@@ -89,4 +89,3 @@ export const BRAND = {
     </div>
   );
 }
-
