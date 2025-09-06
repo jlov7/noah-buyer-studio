@@ -5,6 +5,9 @@
 :root {
   --bg: #0b0e14;
   --fg: #eaeef5;
+  --brand-color: #1c7ed6;
+  --brand-color-dark: #1864ab;
+  --brand-color-light: #4dabf7;
 }
 
 html, body {
@@ -25,7 +28,11 @@ body {
 }
 
 .btn {
-  @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand px-4 py-2 font-medium text-white hover:bg-brand-dark active:scale-[0.99];
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 font-medium text-white active:scale-[0.99];
+  background-color: var(--brand-color);
+}
+.btn:hover {
+  background-color: var(--brand-color-dark);
 }
 
 .input {
@@ -33,11 +40,23 @@ body {
 }
 
 .badge {
-  @apply inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-white;
+  @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium text-white;
+  background-color: color-mix(in oklab, var(--brand-color) 25%, #000 75%);
 }
 
 .sticky-cta {
   @apply fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-black/70 backdrop-blur;
+}
+
+/* Override some Tailwind classes to pick up brand variables */
+.bg-brand { background-color: var(--brand-color) !important; }
+.hover\:bg-brand-dark:hover { background-color: var(--brand-color-dark) !important; }
+.text-brand { color: var(--brand-color) !important; }
+
+/* Print footer */
+.print-only { display: none; }
+@media print {
+  .print-only { display: block; position: fixed; bottom: 8mm; left: 12mm; right: 12mm; font-size: 10pt; color: #333; }
 }
 
 /* Print styles: simplify, hide nav/cta, and print only the brief card */

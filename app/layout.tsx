@@ -8,6 +8,7 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import Modal from '@/components/ui/Modal';
 import BrandMark from '@/components/BrandMark';
+import { BRAND } from '@/lib/brand';
 
 const StepNav = dynamic(() => import('@/components/ui/StepNav'), { ssr: false });
 
@@ -25,9 +26,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         <link rel="apple-touch-icon" href="/icons/icon.svg" />
+        <link rel="icon" href="/brand/logo.svg" type="image/svg+xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body>
+      <body style={{ ['--brand-color' as any]: BRAND.colors.primary, ['--brand-color-dark' as any]: BRAND.colors.dark, ['--brand-color-light' as any]: BRAND.colors.light }}>
         <ServiceWorkerRegister />
         <IosA2HSBanner />
         <main className="container py-6">
@@ -65,6 +67,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <StepNav />
           {children}
         </main>
+        <div className="print-only">
+          {BRAND.name} — {BRAND.website}
+        </div>
         <Modal open={openShare} onClose={() => setOpenShare(false)} title="Share this app (Codespaces)">
           <ol className="list-decimal pl-5 space-y-1">
             <li>Open Ports panel in Codespaces.</li>
