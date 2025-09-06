@@ -7,6 +7,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import Modal from '@/components/ui/Modal';
+import BrandMark from '@/components/BrandMark';
 
 const StepNav = dynamic(() => import('@/components/ui/StepNav'), { ssr: false });
 
@@ -31,7 +32,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <IosA2HSBanner />
         <main className="container py-6">
           <header className="mb-6 flex items-center justify-between">
-            <Link href="/" className="text-xl font-semibold">Noah Buyer Studio</Link>
+            <div className="flex items-center gap-3">
+              <Link href="/" className="text-xl font-semibold">Noah Buyer Studio</Link>
+              <span className="hidden text-gray-500 md:inline">·</span>
+              <BrandMark className="hidden md:inline-flex" />
+            </div>
             <nav className="flex items-center gap-3 text-sm text-gray-300">
               <Link href="/">Intake</Link>
               <Link href="/map">Map</Link>

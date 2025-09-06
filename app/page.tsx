@@ -4,6 +4,7 @@ import Card from '@/components/ui/Card';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Section from '@/components/ui/Section';
+import BrandMark from '@/components/BrandMark';
 
 type Brief = {
   summary: string;
@@ -153,6 +154,10 @@ export default function Page() {
 
       {brief && (
         <Card className="printable">
+          <div className="mb-3 flex items-center justify-between">
+            <div className="text-sm text-gray-300">Buyer Brief</div>
+            <BrandMark />
+          </div>
           <h2 className="mb-2 text-lg font-semibold">Buyer Brief</h2>
           <p className="whitespace-pre-wrap text-sm text-gray-100">{brief.summary}</p>
           <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">

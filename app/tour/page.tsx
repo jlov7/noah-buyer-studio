@@ -6,6 +6,7 @@ import Card from '@/components/ui/Card';
 import Section from '@/components/ui/Section';
 import HelpTip from '@/components/ui/HelpTip';
 import MapStartPreview from '@/components/MapStartPreview';
+import BrandMark from '@/components/BrandMark';
 
 type Listing = typeof listingsData[number];
 
@@ -89,7 +90,7 @@ export default function TourPage({ searchParams }: { searchParams: { ids?: strin
           const note = (notes as any)[s.id];
           if (note) lines.push(`   Notes: ${note}`);
         });
-        const subject = encodeURIComponent('Austin Tour Plan');
+        const subject = encodeURIComponent('EpiQue Realty — Austin Tour Plan');
         const body = encodeURIComponent(lines.join('\n'));
         setEmailLink(`mailto:?subject=${subject}&body=${body}`);
       } catch {
@@ -211,6 +212,10 @@ export default function TourPage({ searchParams }: { searchParams: { ids?: strin
         </Card>
       )}
       <Card className="printable">
+        <div className="mb-3 flex items-center justify-between">
+          <div className="text-sm text-gray-300">Tour Plan</div>
+          <BrandMark />
+        </div>
         <div className="mb-2 text-lg font-semibold">Smart Tour</div>
         <div className="text-sm text-gray-300">{selected.length} homes selected</div>
         {buyerName && <div className="mt-1 inline-flex items-center gap-2 text-xs"><span className="badge">Buyer</span><span className="opacity-90">{buyerName}</span></div>}
