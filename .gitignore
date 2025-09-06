@@ -1,0 +1,10 @@
+node_modules
+.next
+.vercel
+dist
+.DS_Store
+coverage
+*.local
+*.log
+*.cache
+

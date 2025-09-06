@@ -1,0 +1,20 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {"name": "Oak Wilt Area (sample)"},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-97.75, 30.30],
+          [-97.745, 30.30],
+          [-97.745, 30.305],
+          [-97.75, 30.305],
+          [-97.75, 30.30]
+        ]]
+      }
+    }
+  ]
+}
+

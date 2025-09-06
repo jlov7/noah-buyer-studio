@@ -1,0 +1,8 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {"type": "Feature", "properties": {"case": "Trash (sample)"}, "geometry": {"type": "Point", "coordinates": [-97.743, 30.267]}},
+    {"type": "Feature", "properties": {"case": "Weeds (sample)"}, "geometry": {"type": "Point", "coordinates": [-97.72, 30.25]}}
+  ]
+}
+

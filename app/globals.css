@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0b0e14;
+  --fg: #eaeef5;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  color: var(--fg);
+  background: #0e1218;
+}
+
+.container {
+  @apply max-w-3xl mx-auto px-4;
+}
+
+.card {
+  @apply rounded-xl bg-white/5 border border-white/10 p-4 backdrop-blur;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-md bg-brand px-4 py-2 font-medium text-white hover:bg-brand-dark active:scale-[0.99];
+}
+
+.input {
+  @apply w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand;
+}
+
+.badge {
+  @apply inline-flex items-center rounded-full bg-white/10 px-2.5 py-1 text-xs font-medium text-white;
+}
+
+.sticky-cta {
+  @apply fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-black/70 backdrop-blur;
+}
+
+/* Print styles: simplify, hide nav/cta, and print only the brief card */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  header, nav, .sticky-cta, .step-nav, .no-print {
+    display: none !important;
+  }
+  .container {
+    max-width: 100% !important;
+    padding: 0 12mm !important;
+  }
+  .card {
+    background: #ffffff !important;
+    border-color: #dddddd !important;
+  }
+  /* Keep only the brief content visible */
+  .container > *:not(.printable) {
+    display: none !important;
+  }
+}

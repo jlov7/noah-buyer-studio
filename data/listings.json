@@ -1,0 +1,11 @@
+[
+  {"id":"a1","address":"501 W Ave, Austin, TX 78701","lat":30.2682,"lng":-97.7493,"beds":2,"baths":2,"price":785000},
+  {"id":"a2","address":"200 E Riverside Dr, Austin, TX 78704","lat":30.2553,"lng":-97.7442,"beds":3,"baths":2,"price":650000},
+  {"id":"a3","address":"1900 Simond Ave, Austin, TX 78723","lat":30.2979,"lng":-97.7015,"beds":3,"baths":3,"price":720000},
+  {"id":"a4","address":"5600 Wilson Heights Dr, Austin, TX 78731","lat":30.3519,"lng":-97.7596,"beds":4,"baths":3,"price":1150000},
+  {"id":"a5","address":"1211 W 6th St, Austin, TX 78703","lat":30.2758,"lng":-97.7555,"beds":2,"baths":2,"price":895000},
+  {"id":"a6","address":"10000 Research Blvd, Austin, TX 78759","lat":30.3946,"lng":-97.7425,"beds":4,"baths":3,"price":780000},
+  {"id":"a7","address":"6301 W Parmer Ln, Austin, TX 78729","lat":30.4577,"lng":-97.7371,"beds":4,"baths":3,"price":640000},
+  {"id":"a8","address":"8601 S Congress Ave, Austin, TX 78745","lat":30.1717,"lng":-97.7823,"beds":3,"baths":2,"price":450000}
+]
+
