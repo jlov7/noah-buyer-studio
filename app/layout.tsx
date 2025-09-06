@@ -9,6 +9,8 @@ import { useState } from 'react';
 import Modal from '@/components/ui/Modal';
 import BrandMark from '@/components/BrandMark';
 import { BRAND } from '@/lib/brand';
+import { useEffect } from 'react';
+import DemoDisclaimerBanner from '@/components/DemoDisclaimerBanner';
 
 const StepNav = dynamic(() => import('@/components/ui/StepNav'), { ssr: false });
 
@@ -23,6 +25,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const [openShare, setOpenShare] = useState(false);
   const [openAbout, setOpenAbout] = useState(false);
   const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const onHash = () => {
+      if (window.location.hash === '#about') setOpenAbout(true);
+    };
+    const onOpen = () => setOpenAbout(true);
+    window.addEventListener('hashchange', onHash);
+    window.addEventListener('open-about' as any, onOpen as any);
+    onHash();
+    return () => {
+      window.removeEventListener('hashchange', onHash);
+      window.removeEventListener('open-about' as any, onOpen as any);
+    };
+  }, []);
   return (
     <html lang="en">
       <head>
@@ -35,6 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ServiceWorkerRegister />
         <IosA2HSBanner />
         <main className="container py-6">
+          <DemoDisclaimerBanner />
           <header className="mb-6 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Link href="/" className="text-xl font-semibold">Noah Buyer Studio</Link>
@@ -106,7 +124,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div className="sticky-cta">
           <div className="container flex items-center justify-between py-3 text-sm">
             <div>Plan your Austin tour with Noah</div>
-            <Link href="/tour" className="btn">Plan tour with Noah</Link>
+            <div className="flex items-center gap-2">
+              <button className="btn bg-white/10 hover:bg-white/20" onClick={() => setOpenAbout(true)}>About</button>
+              <Link href="/tour" className="btn">Plan tour with Noah</Link>
+            </div>
           </div>
         </div>
       </body>
