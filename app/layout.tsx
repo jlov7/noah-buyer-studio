@@ -44,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/">Intake</Link>
               <Link href="/map">Map</Link>
               <Link href="/tour">Tour</Link>
+              <Link href="/brand" className="hidden md:inline">Brand</Link>
               <button
                 className="btn bg-white/10 hover:bg-white/20"
                 onClick={async () => {
