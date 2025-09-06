@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const [openShare, setOpenShare] = useState(false);
+  const [openAbout, setOpenAbout] = useState(false);
   const [copied, setCopied] = useState(false);
   return (
     <html lang="en">
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/map">Map</Link>
               <Link href="/tour">Tour</Link>
               <Link href="/brand" className="hidden md:inline">Brand</Link>
+              <button className="btn bg-white/10 hover:bg-white/20" onClick={() => setOpenAbout(true)}>About</button>
               <button
                 className="btn bg-white/10 hover:bg-white/20"
                 onClick={async () => {
@@ -79,6 +81,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <li>Copy the forwarded URL and send it to your buyer.</li>
           </ol>
           <p className="mt-2">Tip: Use the Share button to copy the current link.</p>
+        </Modal>
+        <Modal open={openAbout} onClose={() => setOpenAbout(false)} title="About this demo">
+          <div className="space-y-2">
+            <p>
+              This is an illustrative demo for discussion. It is not affiliated with or endorsed by any brokerage. Replace demo brand assets before any external use.
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Zero‑key build: GitHub Models (server‑side via Codespaces GITHUB_TOKEN), OSRM public routing, MapLibre + OSM tiles (demo use; attribution visible).</li>
+              <li>Compliance cues: neutral school language; TREC §535.17 price disclosure shown under price content.</li>
+              <li>Routing: avoids Google Distance/Places with non‑Google maps due to Google TOS.</li>
+              <li>Open source: see README and docs in this repo for details.</li>
+            </ul>
+            <p className="text-xs text-gray-400">Data shown are samples for demonstration only.</p>
+          </div>
         </Modal>
         <div className="sticky-cta">
           <div className="container flex items-center justify-between py-3 text-sm">
