@@ -119,6 +119,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               {' '}·{' '}
               <a className="text-brand underline" href="https://github.com/jlov7/noah-buyer-studio/blob/main/docs/QUICKSTART.md" target="_blank" rel="noreferrer">Quickstart</a>
             </div>
+            <div className="pt-3">
+              <button
+                className="btn bg-white/10 hover:bg-white/20"
+                onClick={() => {
+                  try {
+                    const keys = [
+                      'nbs:selectedIds',
+                      'nbs:overlays',
+                      'nbs:femaOpacity',
+                      'nbs:showRoute',
+                      'nbs:startCoord',
+                      'nbs:intakeName',
+                      'nbs:intakeEmail',
+                      'nbs:demoDisclaimer',
+                      'nbs:brandColors',
+                    ];
+                    keys.forEach((k) => localStorage.removeItem(k));
+                  } catch {}
+                  // Reload to apply default styles and state
+                  if (typeof window !== 'undefined') window.location.reload();
+                }}
+              >
+                Reset demo
+              </button>
+            </div>
           </div>
         </Modal>
         <div className="sticky-cta">
