@@ -18,6 +18,14 @@ A clean, mobile‑friendly PWA for Noah (Austin Realtor) to capture a 3‑minute
 2) Map (/map) — Toggle overlays (FEMA WMS + sample GeoJSON) and select 4–6 homes. Select one home to see commute chips (Downtown, UT, Domain). Route preview shows a polyline with total drive time and distance. Optionally “Pick start on map” to place a draggable S pin; preview updates accordingly.
 3) Tour (/tour) — Adjust dwell/buffer, choose start (Downtown, first listing, custom, current, or map start), add per‑stop notes, reorder stops (drag or arrow keys), then export the .ics calendar. Use “Share via email” to send a plain‑text plan.
 
+## Walkthrough (2 min)
+- Watch: https://www.loom.com/share/your-video-id-here
+- Script: docs/WALKTHROUGH.md
+- Optional GIFs (drop files here and update links):
+  - Intake: docs/media/intake.gif
+  - Map: docs/media/map.gif
+  - Tour: docs/media/tour.gif
+
 ## Scripts
 - Install: `npm ci`
 - Dev: `npm run dev`
